@@ -1,0 +1,237 @@
+//Function Overloading
+
+#include <iostream>
+using namespace std;
+
+class Print {
+public:
+    // Function to print an integer
+    void display(int i) {
+        cout << "Integer: " << i << endl;
+    }
+
+    // Function to print a double
+    void display(double d) {
+        cout << "Double: " << d << endl;
+    }
+
+    // Function to print a string
+    void display(string s) {
+        cout << "String: " << s << endl;
+    }
+};
+
+int main() {
+    Print p;
+
+    // Calling different overloaded functions
+    p.display(5);         // Calls display(int)
+    p.display(5.5);       // Calls display(double)
+    p.display("Hello");   // Calls display(string)
+
+    return 0;
+}
+
+______________________________________________________________
+//Switch statement
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int day = 3;  // Example day (3 for Wednesday)
+
+    switch (day) {
+        case 1:
+            cout << "Monday" << endl;
+            break;
+        case 2:
+            cout << "Tuesday" << endl;
+            break;
+        case 3:
+            cout << "Wednesday" << endl;
+            break;
+        case 4:
+            cout << "Thursday" << endl;
+            break;
+        case 5:
+            cout << "Friday" << endl;
+            break;
+        case 6:
+            cout << "Saturday" << endl;
+            break;
+        case 7:
+            cout << "Sunday" << endl;
+            break;
+        default:
+            cout << "Invalid day" << endl;
+            break;
+    }
+
+    return 0;
+}
+
+________________________________________________________
+
+
+
+____________________________________________________________
+//Defining and Using Arrays
+
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};  // Static array of size 5
+    printArray(arr, 5);  // Function call to print the array
+    
+    return 0;
+}
+
+
+_________________________________________________________
+//Defining and Using Vectors
+#include <iostream>
+#include <vector>  // Include vector header
+using namespace std;
+
+void printVector(const vector<int>& vec) {
+    for (int val : vec) {
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    vector<int> vec = {1, 2, 3, 4, 5};  // Initialize a vector with 5 elements
+    printVector(vec);  // Function call to print the vector
+    
+    // Adding an element to the vector
+    vec.push_back(6);  // Adds 6 to the end of the vector
+    printVector(vec);
+
+    // Removing the last element
+    vec.pop_back();  // Removes the last element
+    printVector(vec);
+
+    return 0;
+}
+
+___________________________________________________________
+//Passing Vectors to functions
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void modifyVector(vector<int>& vec) {
+    for (int& val : vec) {
+        val *= 2;  // Modify each element by multiplying it by 2
+    }
+}
+
+int main() {
+    vector<int> vec = {1, 2, 3, 4, 5};
+    modifyVector(vec);  // Pass vector to function
+
+    // Print modified vector
+    for (int val : vec) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+___________________________________________________________
+
+//Passing Arrays to Functions
+
+#include <iostream>
+using namespace std;
+
+void modifyArray(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        arr[i] *= 2;  // Modify each element by multiplying it by 2
+    }
+}
+
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    modifyArray(arr, 5);  // Pass array to function
+
+    // Print modified array
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+_________________________________________________-----
+//File Handling
+//Writing to a File (ofstream)
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Create an ofstream object
+    ofstream outFile("example.txt");
+
+    // Check if the file was opened successfully
+    if (!outFile) {
+        cout << "Error opening file for writing!" << endl;
+        return 1;
+    }
+
+    // Write some data to the file
+    outFile << "Hello, world!" << endl;
+    outFile << "This is a sample text file." << endl;
+
+    // Close the file
+    outFile.close();
+
+    cout << "Data written to file successfully!" << endl;
+
+    return 0;
+}
+______________________________________________________
+//Reading from a File (ifstream)
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Create an ifstream object
+    ifstream inFile("example.txt");
+
+    // Check if the file was opened successfully
+    if (!inFile) {
+        cout << "Error opening file for reading!" << endl;
+        return 1;
+    }
+
+    // Read and display the content of the file
+    string line;
+    while (getline(inFile, line)) {
+        cout << line << endl;
+    }
+
+    // Close the file
+    inFile.close();
+
+    return 0;
+}
+__________________________________________________
